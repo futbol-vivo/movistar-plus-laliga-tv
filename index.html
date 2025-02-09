@@ -1,1 +1,39 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="//cdn.jsdelivr.net/npm/@clappr/player@0.8/dist/clappr.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/@swarmcloud/hls/p2p-engine.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://la12hd.com/cssm.css">
+    <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjWWzGQ70S0xdgQ4CALgE54T5Lmdjk_hVZaqyRbrxxR0rRFkPDV1B_NHMXxQyBiAOySYuBq9tMEU3Wx7B5gT3ePp0ITT8Z7mhm1hiC4WVjjQYdPI69I01SaNFTzEGA_wCqeDq7TevWrPK_1ox94uTuGzirHFFN0SnZCSTiEfNopAqQhluvFn34aQcIdYqU/s1600/M+%20LaLiga%20TV.png">
+    <title>M+ LaLiga TV</title>
+    <style>body, html {margin: 0;padding: 0;width: 100%;height: 100%;overflow: hidden;}#player {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}</style>
+</head>
+<body>
+<div id="player"></div>
+<script>
+    var playbackURL = "https://bmf0aw9u.fubohd.com:443/load/m_laligatv/mono.m3u8?token=aae5a8818b49cee865e7fd3907a23f71a6a107cf-56-1739161460-1739125460";
+    var p2pConfig = {
+        live: true,
+        trackerZone: 'us',    
+    }
+    P2PEngineHls.tryRegisterServiceWorker(p2pConfig).then(() => {
+        var player = new Clappr.Player({
+            source: playbackURL,
+            parentId: "#player",
+            poster: '',
+            width: '100%',
+            height: '100%',
+            autoPlay: false,
+            plugins: [],
+            mediacontrol: {seekbar: "#D4ED31", buttons: "#FFFFFF"},
+
+        });
+        p2pConfig.hlsjsInstance = player.core.getCurrentPlayback()?._hls;
+        var engine = new P2PEngineHls(p2pConfig);
+    });
+</script>
+
+</body>
+
+</html>
